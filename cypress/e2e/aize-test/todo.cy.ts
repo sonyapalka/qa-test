@@ -23,9 +23,9 @@ describe('1. example to-do app', () => {
     const newItem = 'Feed the cat';
 
     // enter a new item in the input field
-    cy.get('[data-test=new-todo]').type(`${newItem}{enter}`);
+    cy.get('[data-test=new-todo]').type(`${newItem}`);
     // verify the input text matches what we typed
-    cy.get('[data-test=new-todo]').should('have.value', `${newItem}`);
+    cy.get('[data-test=new-todo]').should('have.value', `${newItem}`).type('{enter}');
     // confirm the new item has been added to the list
     cy.get('.todo-list li').should('have.length', 3).last().should('have.text', newItem);
   });
