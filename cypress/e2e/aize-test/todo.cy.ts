@@ -93,22 +93,36 @@ describe('1. example to-do app', () => {
     });
   });
 
-  context('1.5 with no todo items', () => {
+  context('1.5 with no todo items', () => {  
     beforeEach(() => {
-      // delete all existing items in the list before each test
-      assert.fail('Not implemented yet');
+      // delete all existing items in the list before each test  
+      cy.contains('Pay electric bill').parent().find('input[type=checkbox]').check();
+      cy.contains('Clear completed').click();      
+      cy.contains('Walk the dog').parent().find('input[type=checkbox]').check();
+      cy.contains('Clear completed').click();
     });
 
     it('1.5.1 todo list is empty and items todo count is not visible', () => {
-      assert.fail('Not implemented yet');
+      cy.get('.todo-list li').should('have.length', 0);
+      cy.contains('.todo-count').should('not.exist');
     });
 
-    it('1.5.2 adds 1 items and the todo count label updates to the right value', () => {
-      assert.fail('Not implemented yet');
+    it('1.5.2 adds 1 items and the todo count label updates to the right value', () => {      
+      cy.get('[data-test=new-todo]').type(`NewItem{enter}`);
+      cy.get('span.todo-count').should('have.text', '1 item left');
     });
 
     it('1.5.3 adds 3 new items and verifies each new item is added to the end of the list', () => {
-      assert.fail('Not implemented yet');
+      const newItems = ['NewItem1', 'NewItem2', 'NewItem3'];
+      
+      // Loop through the new items array
+      newItems.forEach((item) => {
+        // Type the new item and press enter
+        cy.get('[data-test=new-todo]').type(`${item}{enter}`);
+    
+        // Verify the list length and the last item's text
+        cy.get('.todo-list li').should('have.length', newItems.indexOf(item) + 1).last().should('have.text', item);
+      });
     });
   });
 });
