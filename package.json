@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leecheve/qa-test.git"
+    "url": "git+https://github.com/sonyapalka/qa-test.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/leecheve/qa-test/issues"
+    "url": "https://github.com/sonyapalka/qa-test/issues"
   },
-  "homepage": "https://github.com/leecheve/qa-test#readme",
+  "homepage": "https://github.com/sonyapalka/qa-test#readme",
   "devDependencies": {
     "cypress": "^12.14.0",
     "typescript": "^5.1.3"
