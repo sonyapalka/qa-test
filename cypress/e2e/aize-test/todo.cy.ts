@@ -42,8 +42,13 @@ describe('1. example to-do app', () => {
     });
 
     it('1.4.1 can edit a checked task', () => {
-      cy.contains('Pay electric bill').dblclick().type('Pay water bill{enter}');
+      cy.contains('Pay electric bill').dblclick();
+
+      // I added clear() before type() to remove 'Pay electric bill'
+      // and additional assertion for it
+      cy.get('.edit').clear().type('Pay water bill{enter}');      
       cy.contains('Pay water bill').should('be.visible');
+      cy.contains('Pay electric bill').should('not.exist');
     });
 
     it('1.4.2 can filter for uncompleted tasks', () => {
