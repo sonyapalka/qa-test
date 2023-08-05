@@ -82,14 +82,14 @@ describe('1. example to-do app', () => {
       // This button only appears when at least one task is checked
       // so this command is implicitly verifying that it does exist.
       // Second, it selects the button so we can click it.
-      const button = cy.contains('Clear completed').click();
+      cy.contains('Clear completed').click();
 
       // Then we can make sure that there is only one element
       // in the list and our element does not exist
       cy.get('.todo-list li').should('have.length', 1).should('not.have.text', 'Pay electric bill');
 
       // Finally, make sure that the clear button no longer exists.
-      button.should('not.exist');
+      cy.contains('Clear completed').should('not.exist');
     });
   });
 
